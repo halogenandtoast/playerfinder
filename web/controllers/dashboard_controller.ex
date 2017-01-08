@@ -1,9 +1,9 @@
 defmodule Playerfinder.DashboardController do
   use Playerfinder.Web, :controller
-  alias Playerfinder.MatchFinder
+  alias Playerfinder.Post
 
   def show(conn, _params) do
-    posts = get_matched_posts(conn) |> Enum.group_by(&(elem &1, 0))
+    posts = get_matched_posts(conn)
 
     conn
     |> assign(:posts, posts)
@@ -17,14 +17,9 @@ defmodule Playerfinder.DashboardController do
     |> Repo.all
   end
 
-  # { :matched | :unmatched, post, matches }
   defp get_matched_posts(conn) do
-    posts = get_posts(conn)
-    Enum.map posts, fn post ->
-      case MatchFinder.find_matches(post) do
-        [] -> { :unmatched, post }
-        matches -> { :matched, post, matches }
-      end
-    end
+    get_posts(conn)
+    |> Enum.map(&Post.with_matches/1)
+    |> Enum.group_by(&(elem &1, 0))
   end
 end

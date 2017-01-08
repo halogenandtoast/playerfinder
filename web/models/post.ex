@@ -9,6 +9,14 @@ defmodule Playerfinder.Post do
     timestamps()
   end
 
+  def with_matches(post) do
+    case Playerfinder.MatchFinder.find_matches(post) do
+      [] -> { :unmatched, post }
+      matches -> { :matched, post, matches }
+    end
+  end
+
+
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
