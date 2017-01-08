@@ -10,12 +10,10 @@ defmodule Playerfinder.MatchFinder do
   end
 
   defp find_matches_query(%Post{game: game, user_id: user_id, owns_game: owns_game}) do
-    query = from p in Post, where: p.game == ^game and p.user_id != ^user_id
-
-    if owns_game do
-      query
-    else
-      query |> where(owns_game: true)
-    end
+    from p in Post,
+    where:
+      p.game == ^game
+        and p.user_id != ^user_id
+        and (^owns_game or p.owns_game)
   end
 end
