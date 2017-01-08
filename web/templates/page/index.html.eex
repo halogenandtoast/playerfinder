@@ -1,0 +1,19 @@
+<section class="sign-in-form">
+  <%= form_for @conn, session_path(@conn, :create), [as: :session], fn form -> %>
+    <div><%= email_input form, :email, placeholder: "Email" %></div>
+    <div><%= password_input form, :password, placeholder: "Password" %></div>
+    <div><%= submit "Sign in" %></div>
+  <% end %>
+</section>
+
+<section class="sign-up-form">
+  <h2>Sign up</h2>
+  <%= form_for @changeset, user_path(@conn, :create), fn form -> %>
+    <div><%= text_input form, :username, placeholder: "Username" %></div>
+    <div><%= email_input form, :email, placeholder: "Email" %></div>
+    <div><%= password_input form, :password, placeholder: "Password" %></div>
+    <div><%= text_input form, :country, placeholder: "Country" %></div>
+    <div><%= text_input form, :zip_code, placeholder: "Zip Code" %></div>
+    <div><%= submit "Sign up" %></div>
+  <% end %>
+</section>

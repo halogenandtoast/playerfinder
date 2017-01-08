@@ -1,0 +1,19 @@
+<h1>Dashboard</h1>
+
+<%= current_user(@conn).username %>
+
+<%= link("Sign out", to: session_path(@conn, :delete), method: :delete) %>
+
+<div>
+  <%= link("Add new post", to: post_path(@conn, :new)) %>
+</div>
+
+<section>
+  <h1>Matched</h1>
+  <%= render_matched_posts(@posts) %>
+</section>
+
+<section>
+  <h1>Unmatched</h1>
+  <%= render_unmatched_posts(@posts) %>
+</section>

@@ -1,0 +1,30 @@
+<%= form_for @changeset, user_path(@conn, :create), fn form -> %>
+  <div>
+    <%= label form, :username %>
+    <%= text_input form, :username, required: true %>
+    <%= error_tag form, :username %>
+  </div>
+  <div>
+    <%= label form, :email %>
+    <%= email_input form, :email, required: true %>
+    <%= error_tag form, :email %>
+  </div>
+  <div>
+    <%= label form, :password %>
+    <%= password_input form, :password, required: true %>
+    <%= error_tag form, :password %>
+  </div>
+  <div>
+    <%= label form, :country %>
+    <%= text_input form, :country, required: true %>
+    <%= error_tag form, :country %>
+  </div>
+  <div>
+    <%= label form, :zip_code %>
+    <%= text_input form, :zip_code, required: true %>
+    <%= error_tag form, :zip_code %>
+  </div>
+  <div>
+    <%= submit "Sign up" %>
+  </div>
+<% end %>

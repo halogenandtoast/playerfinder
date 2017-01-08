@@ -1,0 +1,13 @@
+<h1>New Post</h1>
+<%= form_for @changeset, post_path(@conn, :create), fn form -> %>
+  <div>
+    <%= text_input form, :game, required: true, placeholder: "Game name" %>
+  </div>
+  <div>
+    <%= label form, :owns_game %>
+    <%= checkbox form, :owns_game %>
+  </div>
+  <div>
+    <%= submit "Submit" %>
+  </div>
+<% end %>
