@@ -5,7 +5,8 @@ defmodule Playerfinder.MatchFinder do
   alias Playerfinder.Repo
 
   def find_matches(post) do
-    find_matches_query(post)
+    post
+    |> find_matches_query
     |> Repo.all
   end
 
