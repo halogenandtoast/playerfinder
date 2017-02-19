@@ -4,6 +4,8 @@
 
 <%= link("Sign out", to: session_path(@conn, :delete), method: :delete) %>
 
+<%= link("Settings", to: settings_path(@conn, :edit)) %>
+
 <div>
   <%= link("Add new post", to: post_path(@conn, :new)) %>
 </div>

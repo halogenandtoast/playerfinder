@@ -1,0 +1,12 @@
+<h1>Settings</h1>
+
+<%= form_for @conn, settings_path(@conn, :update), [as: :settings, method: :patch], fn form -> %>
+  <div>
+    <%= label form, :search_radius %>
+    <%= number_input form, :search_radius, value: @search_radius %>
+  </div>
+
+  <div>
+    <%= submit "Submit" %>
+  </div>
+<% end %>

@@ -23,6 +23,7 @@ defmodule Playerfinder.Router do
     resources "/dashboard", DashboardController, only: [:show], singleton: true
     resources "/session", SessionController, only: [:delete, :create], singleton: true
     resources "/post", PostController, only: [:new, :create]
+    resources "/settings", SettingsController, only: [:edit, :update], singleton: true
   end
 
   # Other scopes may use custom stacks.

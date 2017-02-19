@@ -8,6 +8,7 @@ defmodule Playerfinder.User do
     field :password, :string, virtual: true
     field :country, :string
     field :zip_code, :string
+    field :search_radius, :integer
 
     timestamps()
 
